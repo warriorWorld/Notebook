@@ -1,49 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="home_top_bar">
-        <attr name="topbar_background" format="reference|color"></attr>
-        <attr name="left_press_background" format="reference|color"></attr>
-        <attr name="left_background" format="reference|color"></attr>
-        <attr name="left_textSize" format="dimension|reference"></attr>
-        <attr name="left_text" format="string|reference"></attr>
-        <attr name="left_textColor" format="color"/>
-        <attr name="right_background" format="reference|color"></attr>
-        <attr name="right_textSize" format="dimension|reference"></attr>
-        <attr name="right_text" format="string|reference"></attr>
-        <attr name="right_textColor" format="color"/>
-        <attr name="title_text" format="string|reference"></attr>
-        <attr name="title_textSize" format="dimension|reference"></attr>
-        <attr name="title_textColor" format="color"/>
-        <attr name="title_src" format="reference|color"></attr>
-    </declare-styleable>
-
-    <declare-styleable name="RoundProgressBar">
-        <attr name="roundColor" format="color"/>
-        <attr name="roundProgressColor" format="color"/>
-        <attr name="roundWidth" format="dimension"></attr>
-        <attr name="textColor" format="color"/>
-        <attr name="textSize" format="dimension"/>
-        <attr name="max" format="integer"></attr>
-        <attr name="textIsDisplayable" format="boolean"></attr>
-        <attr name="style">
-            <enum name="STROKE" value="0"></enum>
-            <enum name="FILL" value="1"></enum>
-        </attr>
-    </declare-styleable>
-    <attr name="color_no_finger_inner_circle" format="color"/>
-    <attr name="color_no_finger_outer_circle" format="color"/>
-    <attr name="color_finger_on" format="color"/>
-    <attr name="color_finger_up" format="color"/>
-    <attr name="count" format="integer"/>
-    <attr name="tryTimes" format="integer"/>
-    <declare-styleable name="GestureLockViewGroup">
-        <attr name="color_no_finger_inner_circle"/>
-        <attr name="color_no_finger_outer_circle"/>
-        <attr name="color_finger_on"/>
-        <attr name="color_finger_up"/>
-        <attr name="count"/>
-        <attr name="tryTimes"/>
-    </declare-styleable>
 
 </resources>

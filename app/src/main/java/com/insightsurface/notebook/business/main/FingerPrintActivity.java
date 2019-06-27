@@ -8,12 +8,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.insightsurface.lib.utils.ActivityPoor;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.base.BaseActivity;
-import com.insightsurface.notebook.utils.ActivityPoor;
 import com.insightsurface.notebook.widget.dialog.FingerprintDialogFragment;
 
 import java.security.KeyStore;
@@ -40,7 +39,7 @@ public class FingerPrintActivity extends BaseActivity  {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_login;
+        return R.layout.activity_main;
     }
 
     public boolean supportFingerprint() {
