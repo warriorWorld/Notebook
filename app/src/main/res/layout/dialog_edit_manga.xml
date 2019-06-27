@@ -41,7 +41,7 @@
         android:paddingLeft="17dp"
         android:paddingRight="17dp"
         android:text="message"
-        android:textColor="@color/manga_reader_blue"
+        android:textColor="@color/colorPrimary"
         android:textSize="14sp"
         android:visibility="gone" />
 
