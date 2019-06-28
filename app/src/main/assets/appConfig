@@ -1,10 +1,4 @@
 IS_TEST=true
-URL = http://www.huakasugou.com/
-PIC_URL = http://47.99.149.36:8091/api/upload/index
-LOG_URL = http://kafka.xianhuahua.com/app/
-TEST_LOG_URL = http://182.92.80.211:8018/app/
-KEY=M5sVAiPnl8ErmI60
-IMG_KEY=S3p4xgJtA1u5M7302npievwO
-A_ID=19
-IMG_PROJECT=loansystem
-IMG_TYPE=identity
+LUNCH_TARGET=com.insightsurface.notebook.business.main.FingerPrintActivity
+LEANCLOUD_ID=jVea4vi5Ma4U4i7LbVfIDJEi-gzGzoHsz
+LEANCLOUD_KEY=Xin3oGqmeRiIQCm8w2E2q9U6

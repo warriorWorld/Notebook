@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">FingerPrint</string>
+    <string name="app_name">Notebook</string>
+    <string name="app_name_english">notebook</string>
 </resources>
