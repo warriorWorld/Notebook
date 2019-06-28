@@ -30,6 +30,6 @@ dependencies {
     implementation 'pub.devrel:easypermissions:1.0.0'
     // LeanCloud 基础包
     implementation ('cn.leancloud.android:avoscloud-sdk:v4.7.10')
-    implementation 'com.github.warriorWorld:SuhangLib:1.0.5'
+    implementation 'com.github.warriorWorld:SuhangLib:1.0.6'
     implementation 'com.github.Aspsine:SwipeToLoadLayout:1.0.4'
 }
