@@ -1,6 +1,7 @@
 package com.insightsurface.notebook.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import com.insightsurface.lib.base.BaseRecyclerAdapter;
 import com.insightsurface.lib.listener.OnRecycleItemClickListener;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.bean.NoteBean;
+import com.insightsurface.notebook.business.main.MainActivity;
+import com.insightsurface.notebook.business.release.ReleaseActivity;
 
 import java.util.ArrayList;
 
@@ -42,8 +45,8 @@ public class NoteAdapter extends BaseRecyclerAdapter {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, ReleaseActivity.class);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, ReleaseActivity.class);
+                context.startActivity(intent);
             }
         };
     }

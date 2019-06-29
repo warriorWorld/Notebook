@@ -18,6 +18,7 @@ import com.insightsurface.lib.utils.ActivityPoor;
 import com.insightsurface.lib.widget.dialog.NormalDialog;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.base.BaseActivity;
+import com.insightsurface.notebook.business.release.ReleaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private MainFragment mMainFragment;
@@ -152,6 +153,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 switchContent(curFragment, mUserFragment);
                 break;
             case R.id.release_iv:
+                Intent intent=new Intent(MainActivity.this, ReleaseActivity.class);
+                startActivity(intent);
                 break;
         }
     }

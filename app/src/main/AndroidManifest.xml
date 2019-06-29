@@ -58,6 +58,8 @@
         <activity
             android:name=".business.fingerprint.FingerPrintActivity"
             android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".business.release.ReleaseActivity"></activity>
     </application>
 
 </manifest>

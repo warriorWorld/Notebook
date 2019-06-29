@@ -1,13 +1,7 @@
 package com.insightsurface.notebook.business.main;
 
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -18,6 +12,7 @@ import com.insightsurface.lib.bean.LoginBean;
 import com.insightsurface.lib.listener.OnRecycleItemClickListener;
 import com.insightsurface.lib.utils.LeanCloundUtil;
 import com.insightsurface.lib.utils.SingleLoadBarUtil;
+import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.adapter.NoteAdapter;
 import com.insightsurface.notebook.bean.NoteBean;
 
@@ -32,6 +27,7 @@ public class MainFragment extends BaseRefreshListFragment {
     protected void initUI(View v) {
         super.initUI(v);
         swipeToLoadLayout.setLoadMoreEnabled(false);
+        swipeToLoadLayout.setRefreshEnabled(true);
     }
 
     @Override
@@ -42,7 +38,7 @@ public class MainFragment extends BaseRefreshListFragment {
         }
         SingleLoadBarUtil.getInstance().showLoadBar(getActivity());
         AVQuery<AVObject> query = new AVQuery<>("Note");
-        query.whereEqualTo("targetTodoFolder", AVObject.createWithoutData("_User", LoginBean.getInstance().getObjectId()));
+        query.whereEqualTo("targetUser", AVObject.createWithoutData("_User", LoginBean.getInstance().getObjectId()));
         query.limit(50);
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
@@ -56,6 +52,8 @@ public class MainFragment extends BaseRefreshListFragment {
                             item = new NoteBean();
                             item.setContent(list.get(i).getString("content"));
                             item.setTitle(list.get(i).getString("title"));
+                            item.setCreate_at(list.get(i).getCreatedAt());
+                            item.setObjectId(list.get(i).getObjectId());
                             noteList.add(item);
                         }
                     }
@@ -67,7 +65,7 @@ public class MainFragment extends BaseRefreshListFragment {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_main;
     }
 
     public void scrollToTop() {
