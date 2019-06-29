@@ -1,4 +1,4 @@
-package com.insightsurface.notebook.business.main;
+package com.insightsurface.notebook.business.fingerprint;
 
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.insightsurface.lib.utils.ActivityPoor;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.base.BaseActivity;
+import com.insightsurface.notebook.business.main.MainActivity;
 import com.insightsurface.notebook.widget.dialog.FingerprintDialogFragment;
 
 import java.security.KeyStore;
@@ -39,7 +40,7 @@ public class FingerPrintActivity extends BaseActivity  {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_lunch;
     }
 
     public boolean supportFingerprint() {

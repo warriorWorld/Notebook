@@ -56,7 +56,7 @@
             android:name=".business.main.MainActivity"
             android:launchMode="singleTask"></activity>
         <activity
-            android:name=".business.main.FingerPrintActivity"
+            android:name=".business.fingerprint.FingerPrintActivity"
             android:launchMode="singleTask"></activity>
     </application>
 

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.insightsurface.event.Event;
+import com.insightsurface.notebook.event.Event;
 import com.insightsurface.lib.base.BaseFragment;
 import com.insightsurface.lib.bean.LoginBean;
 import com.insightsurface.notebook.R;
@@ -23,6 +23,8 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     private TextView userNameTv;
     private TextView logoutTv;
     private RelativeLayout feedbackRl;
+    private RelativeLayout folderRl;
+    private RelativeLayout keyRl;
 
     @Nullable
     @Override
@@ -34,7 +36,18 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void initUI(View view) {
+        userIv = (ImageView) view.findViewById(R.id.user_iv);
+        userNameTv = (TextView) view.findViewById(R.id.user_name_tv);
+        folderRl = (RelativeLayout) view.findViewById(R.id.folder_rl);
+        keyRl = (RelativeLayout) view.findViewById(R.id.key_rl);
+        feedbackRl = (RelativeLayout) view.findViewById(R.id.feedback_rl);
+        logoutTv = (TextView) view.findViewById(R.id.logout_tv);
 
+        userIv.setOnClickListener(this);
+        folderRl.setOnClickListener(this);
+        keyRl.setOnClickListener(this);
+        feedbackRl.setOnClickListener(this);
+        logoutTv.setOnClickListener(this);
     }
 
     private void doLogout() {
@@ -47,7 +60,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     private void toggleUI() {
         if (TextUtils.isEmpty(LoginBean.getInstance().getObjectId())) {
             userNameTv.setText("点击登录");
-        }else {
+        } else {
             userNameTv.setText(LoginBean.getInstance().getUserName());
         }
     }

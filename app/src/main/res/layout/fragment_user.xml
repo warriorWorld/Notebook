@@ -10,7 +10,7 @@
         android:id="@+id/user_bg_rl"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/user_iv"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:text="--"
-                android:textColor="@color/white"
+                android:textColor="@color/main_text_color"
                 android:textSize="21sp"/>
 
             <TextView
@@ -44,7 +44,7 @@
                 android:layout_marginTop="5dp"
                 android:includeFontPadding="false"
                 android:text="欢迎您"
-                android:textColor="@color/white"
+                android:textColor="@color/main_text_color"
                 android:textSize="15sp"/>
         </LinearLayout>
     </RelativeLayout>
@@ -57,7 +57,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/rect_white_c5"
-        android:elevation="5dp">
+        android:elevation="1dp">
 
         <ImageView
             android:layout_width="24dp"
@@ -92,7 +92,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/rect_white_c5"
-        android:elevation="5dp">
+        android:elevation="1dp">
 
         <ImageView
             android:layout_width="24dp"
@@ -127,7 +127,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/rect_white_c5"
-        android:elevation="5dp">
+        android:elevation="1dp">
 
         <ImageView
             android:layout_width="24dp"
@@ -162,7 +162,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/rect_white_c5"
-        android:elevation="5dp"
+        android:elevation="1dp"
         android:gravity="center"
         android:text="退出账号"
         android:textColor="@color/main_text_color"

@@ -1,4 +1,4 @@
-package com.insightsurface.event;
+package com.insightsurface.notebook.event;
 
 import com.insightsurface.lib.eventbus.EventBusEvent;
 
