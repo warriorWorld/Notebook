@@ -1,5 +1,6 @@
 package com.insightsurface.notebook.business.main;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -15,8 +16,10 @@ import com.insightsurface.lib.utils.SingleLoadBarUtil;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.adapter.NoteAdapter;
 import com.insightsurface.notebook.bean.NoteBean;
+import com.insightsurface.notebook.business.release.ReleaseActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainFragment extends BaseRefreshListFragment {
@@ -38,6 +41,7 @@ public class MainFragment extends BaseRefreshListFragment {
         AVQuery<AVObject> query = new AVQuery<>("Note");
         query.whereEqualTo("targetUser", AVObject.createWithoutData("_User", LoginBean.getInstance().getObjectId()));
         query.limit(50);
+        query.selectKeys(Arrays.asList("title"));
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -48,7 +52,6 @@ public class MainFragment extends BaseRefreshListFragment {
                         NoteBean item;
                         for (int i = 0; i < list.size(); i++) {
                             item = new NoteBean();
-                            item.setContent(list.get(i).getString("content"));
                             item.setTitle(list.get(i).getString("title"));
                             item.setCreate_at(list.get(i).getCreatedAt());
                             item.setObjectId(list.get(i).getObjectId());
@@ -84,6 +87,9 @@ public class MainFragment extends BaseRefreshListFragment {
                 mAdapter.setOnRecycleItemClickListener(new OnRecycleItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
+                        Intent intent=new Intent(getActivity(), ReleaseActivity.class);
+                        intent.putExtra("note_id",noteList.get(position).getObjectId());
+                        startActivity(intent);
                     }
                 });
                 refreshRcv.setAdapter(mAdapter);
