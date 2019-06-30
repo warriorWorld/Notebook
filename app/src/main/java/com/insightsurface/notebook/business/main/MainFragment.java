@@ -26,8 +26,6 @@ public class MainFragment extends BaseRefreshListFragment {
     @Override
     protected void initUI(View v) {
         super.initUI(v);
-        swipeToLoadLayout.setLoadMoreEnabled(false);
-        swipeToLoadLayout.setRefreshEnabled(true);
     }
 
     @Override
