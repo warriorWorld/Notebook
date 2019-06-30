@@ -19,6 +19,7 @@ import com.insightsurface.lib.widget.dialog.NormalDialog;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.base.BaseActivity;
 import com.insightsurface.notebook.business.release.ReleaseActivity;
+import com.insightsurface.notebook.utils.StateUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private MainFragment mMainFragment;
@@ -153,8 +154,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 switchContent(curFragment, mUserFragment);
                 break;
             case R.id.release_iv:
-                Intent intent=new Intent(MainActivity.this, ReleaseActivity.class);
-                startActivity(intent);
+                if (StateUtil.haveKey(MainActivity.this)) {
+                    Intent intent = new Intent(MainActivity.this, ReleaseActivity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }

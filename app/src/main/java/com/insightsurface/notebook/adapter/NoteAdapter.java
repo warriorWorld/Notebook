@@ -15,6 +15,7 @@ import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.bean.NoteBean;
 import com.insightsurface.notebook.business.main.MainActivity;
 import com.insightsurface.notebook.business.release.ReleaseActivity;
+import com.insightsurface.notebook.utils.StateUtil;
 
 import java.util.ArrayList;
 
@@ -45,8 +46,10 @@ public class NoteAdapter extends BaseRecyclerAdapter {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ReleaseActivity.class);
-                context.startActivity(intent);
+                if (StateUtil.haveKey(context)) {
+                    Intent intent = new Intent(context, ReleaseActivity.class);
+                    context.startActivity(intent);
+                }
             }
         };
     }

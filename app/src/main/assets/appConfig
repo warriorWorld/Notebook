@@ -1,4 +1,4 @@
 IS_TEST=true
-LUNCH_TARGET=com.insightsurface.notebook.business.fingerprint.FingerPrintActivity
+LUNCH_TARGET=com.insightsurface.notebook.business.encrypt.FingerPrintActivity
 LEANCLOUD_ID=jVea4vi5Ma4U4i7LbVfIDJEi-gzGzoHsz
 LEANCLOUD_KEY=Xin3oGqmeRiIQCm8w2E2q9U6

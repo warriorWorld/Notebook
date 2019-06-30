@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:text="本应用所有笔记采用加密传输方式,并且秘钥由用户自行设置.秘钥只会保存在手机本地.从而确保除用户本人外.没有任何人能够解密.输入后不可更改.请牢记!"
+        android:textColor="@color/main_text_color"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:text="建议使用一整句话作为秘钥,单词间用0分隔.超出24位直接截掉.如:this0is0a0cryptographic0notebook 截掉24位之后的结果为this0is0a0cryptographic0"
+        android:textColor="@color/main_text_color"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/key_et"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:gravity="center_vertical"
+        android:hint="请输入24位自定义秘钥"
+        android:maxLength="24"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:singleLine="true"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/btn_click_c5"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+</LinearLayout>

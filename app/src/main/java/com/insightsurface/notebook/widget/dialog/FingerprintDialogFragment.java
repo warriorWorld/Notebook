@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.insightsurface.notebook.R;
-import com.insightsurface.notebook.business.fingerprint.FingerPrintActivity;
+import com.insightsurface.notebook.business.encrypt.FingerPrintActivity;
 
 import javax.crypto.Cipher;
 

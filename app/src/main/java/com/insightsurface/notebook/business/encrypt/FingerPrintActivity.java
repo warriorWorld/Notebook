@@ -1,4 +1,4 @@
-package com.insightsurface.notebook.business.fingerprint;
+package com.insightsurface.notebook.business.encrypt;
 
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;

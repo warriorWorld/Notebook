@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.insightsurface.notebook.business.encrypt.KeyActivity;
 import com.insightsurface.notebook.event.Event;
 import com.insightsurface.lib.base.BaseFragment;
 import com.insightsurface.lib.bean.LoginBean;
@@ -70,6 +71,9 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.user_iv:
+                break;
+            case R.id.key_rl:
+                intent=new Intent(getActivity(), KeyActivity.class);
                 break;
             case R.id.feedback_rl:
                 break;

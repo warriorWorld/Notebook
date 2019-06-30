@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.insightsurface.lib.listener.ScreenListener;
-import com.insightsurface.notebook.business.fingerprint.FingerPrintActivity;
+import com.insightsurface.notebook.business.encrypt.FingerPrintActivity;
 
 
 /**

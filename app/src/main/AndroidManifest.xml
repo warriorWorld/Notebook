@@ -56,10 +56,10 @@
             android:name=".business.main.MainActivity"
             android:launchMode="singleTask"></activity>
         <activity
-            android:name=".business.fingerprint.FingerPrintActivity"
+            android:name=".business.encrypt.FingerPrintActivity"
             android:launchMode="singleTask"></activity>
-        <activity
-            android:name=".business.release.ReleaseActivity"></activity>
+        <activity android:name=".business.release.ReleaseActivity"></activity>
+        <activity android:name=".business.encrypt.KeyActivity"></activity>
     </application>
 
 </manifest>
