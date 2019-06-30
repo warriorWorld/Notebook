@@ -53,8 +53,8 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                 SingleLoadBarUtil.getInstance().dismissLoadBar();
                 if (LeanCloundUtil.handleLeanResult(ReleaseActivity.this, e)) {
                     if (null != list && list.size() > 0) {
-                        titleEt.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(ReleaseActivity.this), list.get(0).getString("title"))));
-                        contentEt.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(ReleaseActivity.this), list.get(0).getString("content"))));
+                        titleEt.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(ReleaseActivity.this), list.get(0).getString("title")).replaceAll("<space/>", " ")));
+                        contentEt.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(ReleaseActivity.this), list.get(0).getString("content")).replaceAll("<space/>", " ")));
                     }
                 }
             }
