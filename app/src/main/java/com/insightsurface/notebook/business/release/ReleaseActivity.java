@@ -27,6 +27,15 @@ public class ReleaseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         noteId = getIntent().getStringExtra("note_id");
+        titleEt.setEnabled(TextUtils.isEmpty(noteId));
+        contentEt.setEnabled(TextUtils.isEmpty(noteId));
+        if (!TextUtils.isEmpty(noteId)) {
+            doGetNote();
+        }
+    }
+
+    private void doGetNote() {
+
     }
 
     @Override

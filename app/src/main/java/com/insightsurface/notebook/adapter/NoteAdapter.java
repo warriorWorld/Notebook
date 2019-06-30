@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.insightsurface.lib.base.BaseRecyclerAdapter;
 import com.insightsurface.lib.listener.OnRecycleItemClickListener;
+import com.insightsurface.lib.utils.ThreeDESUtil;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.bean.NoteBean;
 import com.insightsurface.notebook.business.main.MainActivity;
@@ -74,7 +75,7 @@ public class NoteAdapter extends BaseRecyclerAdapter {
     @Override
     protected void refreshNormalViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         final NoteBean item = list.get(position);
-        ((NormalViewHolder) viewHolder).titleTv.setText(Html.fromHtml(item.getTitle()));
+        ((NormalViewHolder) viewHolder).titleTv.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(context),item.getTitle())));
         ((NormalViewHolder) viewHolder).timeTv.setText(item.getCreate_at().toString());
         ((NormalViewHolder) viewHolder).noteLl.setOnClickListener(new View.OnClickListener() {
             @Override
