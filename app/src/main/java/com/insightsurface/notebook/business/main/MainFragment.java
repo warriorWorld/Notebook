@@ -41,7 +41,11 @@ public class MainFragment extends BaseRefreshListFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
+            try {
             doGetData();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

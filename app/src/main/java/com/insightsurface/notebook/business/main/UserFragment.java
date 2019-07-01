@@ -59,10 +59,12 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void toggleUI() {
+        logoutTv.setVisibility(View.GONE);
         if (TextUtils.isEmpty(LoginBean.getInstance().getObjectId())) {
             userNameTv.setText("点击登录");
         } else {
             userNameTv.setText(LoginBean.getInstance().getUserName());
+            logoutTv.setVisibility(View.VISIBLE);
         }
     }
 
