@@ -31,6 +31,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -172,8 +173,11 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                 file.mkdirs();
             }
             try {
+                Long time = new Date().getTime();
+                String timeString = time + "";
+                timeString = timeString.substring(5);
                 FileWriter fw = new FileWriter(Configure.DOWNLOAD_PATH + File.separator
-                        + ThreeDESUtil.encode(StateUtil.getKey(this), title) + ".txt", true);
+                        + timeString + ".txt", true);
                 fw.write(ThreeDESUtil.encode(StateUtil.getKey(this), content));
                 fw.close();
                 baseToast.showToast("保存成功!\n已保存至" + Configure.DOWNLOAD_PATH + "文件夹");
