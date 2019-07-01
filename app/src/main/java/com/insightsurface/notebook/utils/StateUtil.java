@@ -42,7 +42,7 @@ public class StateUtil {
             });
             dialog.show();
             dialog.setTitle("请先设置秘钥");
-            dialog.setMessage("设置秘钥完成后才可以添加笔记");
+            dialog.setMessage("设置秘钥完成后才可以添加或查看笔记");
             dialog.setOkBtnText("去设置");
             dialog.setCancelBtnText("取消");
             return false;

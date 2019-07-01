@@ -75,7 +75,11 @@ public class NoteAdapter extends BaseRecyclerAdapter {
     @Override
     protected void refreshNormalViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         final NoteBean item = list.get(position);
-        ((NormalViewHolder) viewHolder).titleTv.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(context),item.getTitle())));
+        if (StateUtil.haveKey(context,false)) {
+            ((NormalViewHolder) viewHolder).titleTv.setText(Html.fromHtml(ThreeDESUtil.decode(StateUtil.getKey(context), item.getTitle())));
+        }else {
+            ((NormalViewHolder) viewHolder).titleTv.setText("请重新填写秘钥");
+        }
         ((NormalViewHolder) viewHolder).timeTv.setText(item.getCreate_at().toString());
         ((NormalViewHolder) viewHolder).noteLl.setOnClickListener(new View.OnClickListener() {
             @Override

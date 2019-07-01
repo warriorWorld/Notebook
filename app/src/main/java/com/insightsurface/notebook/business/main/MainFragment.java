@@ -17,6 +17,7 @@ import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.adapter.NoteAdapter;
 import com.insightsurface.notebook.bean.NoteBean;
 import com.insightsurface.notebook.business.release.ReleaseActivity;
+import com.insightsurface.notebook.utils.StateUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,9 +88,11 @@ public class MainFragment extends BaseRefreshListFragment {
                 mAdapter.setOnRecycleItemClickListener(new OnRecycleItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        Intent intent=new Intent(getActivity(), ReleaseActivity.class);
-                        intent.putExtra("note_id",noteList.get(position).getObjectId());
-                        startActivity(intent);
+                        if (StateUtil.haveKey(getActivity())) {
+                            Intent intent = new Intent(getActivity(), ReleaseActivity.class);
+                            intent.putExtra("note_id", noteList.get(position).getObjectId());
+                            startActivity(intent);
+                        }
                     }
                 });
                 refreshRcv.setAdapter(mAdapter);
