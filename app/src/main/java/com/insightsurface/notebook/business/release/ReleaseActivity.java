@@ -179,7 +179,7 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                 FileWriter fw = new FileWriter(Configure.DOWNLOAD_PATH + File.separator
                         + title
                         + ".txt", true);
-                fw.write(content);
+                fw.write(ThreeDESUtil.encode(StateUtil.getKey(this), content));
                 fw.close();
                 baseToast.showToast("保存成功!\n已保存至" + Configure.DOWNLOAD_PATH + "文件夹");
                 // 上传错误信息到服务器
