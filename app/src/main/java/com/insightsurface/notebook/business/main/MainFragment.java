@@ -4,15 +4,20 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.avos.avoscloud.AVCloudQueryResult;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.CloudQueryCallback;
 import com.avos.avoscloud.FindCallback;
 import com.insightsurface.lib.base.BaseRefreshListFragment;
 import com.insightsurface.lib.bean.LoginBean;
+import com.insightsurface.lib.listener.OnDialogClickListener;
 import com.insightsurface.lib.listener.OnRecycleItemClickListener;
+import com.insightsurface.lib.listener.OnRecycleItemLongClickListener;
 import com.insightsurface.lib.utils.LeanCloundUtil;
 import com.insightsurface.lib.utils.SingleLoadBarUtil;
+import com.insightsurface.lib.widget.dialog.NormalDialog;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.adapter.NoteAdapter;
 import com.insightsurface.notebook.bean.NoteBean;
@@ -33,6 +38,14 @@ public class MainFragment extends BaseRefreshListFragment {
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            doGetData();
+        }
+    }
+
+    @Override
     protected void doGetData() {
         if (TextUtils.isEmpty(LoginBean.getInstance().getObjectId())) {
             initRec();
@@ -43,6 +56,8 @@ public class MainFragment extends BaseRefreshListFragment {
         query.whereEqualTo("targetUser", AVObject.createWithoutData("_User", LoginBean.getInstance().getObjectId()));
         query.limit(50);
         query.selectKeys(Arrays.asList("title"));
+        // 按时间，降序排列
+        query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -79,6 +94,44 @@ public class MainFragment extends BaseRefreshListFragment {
         return null;
     }
 
+    private void deleteNote(String noteId) {
+        if (TextUtils.isEmpty(noteId)) {
+            return;
+        }
+        SingleLoadBarUtil.getInstance().showLoadBar(getActivity());
+        // 执行 CQL 语句实现删除一个  对象
+        AVQuery.doCloudQueryInBackground(
+                "delete from Note where objectId='" + noteId + "'"
+                , new CloudQueryCallback<AVCloudQueryResult>() {
+                    @Override
+                    public void done(AVCloudQueryResult avCloudQueryResult, AVException e) {
+                        SingleLoadBarUtil.getInstance().dismissLoadBar();
+                        if (LeanCloundUtil.handleLeanResult(getActivity(), e)) {
+                            doGetData();
+                        }
+                    }
+                });
+    }
+
+    private void showDeleteDialog(final String id) {
+        NormalDialog dialog = new NormalDialog(getActivity());
+        dialog.setOnDialogClickListener(new OnDialogClickListener() {
+            @Override
+            public void onOkClick() {
+                deleteNote(id);
+            }
+
+            @Override
+            public void onCancelClick() {
+
+            }
+        });
+        dialog.show();
+        dialog.setTitle("是否删除该笔记?");
+        dialog.setOkBtnText("删除");
+        dialog.setCancelBtnText("取消");
+    }
+
     @Override
     protected void initRec() {
         try {
@@ -93,6 +146,12 @@ public class MainFragment extends BaseRefreshListFragment {
                             intent.putExtra("note_id", noteList.get(position).getObjectId());
                             startActivity(intent);
                         }
+                    }
+                });
+                mAdapter.setOnRecycleItemLongClickListener(new OnRecycleItemLongClickListener() {
+                    @Override
+                    public void onItemLongClick(int position) {
+                        showDeleteDialog(noteList.get(position).getObjectId());
                     }
                 });
                 refreshRcv.setAdapter(mAdapter);

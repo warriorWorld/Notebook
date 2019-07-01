@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.insightsurface.lib.base.BaseRecyclerAdapter;
 import com.insightsurface.lib.listener.OnRecycleItemClickListener;
+import com.insightsurface.lib.listener.OnRecycleItemLongClickListener;
 import com.insightsurface.lib.utils.ThreeDESUtil;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.bean.NoteBean;
@@ -18,6 +19,7 @@ import com.insightsurface.notebook.business.main.MainActivity;
 import com.insightsurface.notebook.business.release.ReleaseActivity;
 import com.insightsurface.notebook.utils.StateUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -27,7 +29,8 @@ import java.util.ArrayList;
 public class NoteAdapter extends BaseRecyclerAdapter {
     private ArrayList<NoteBean> list = null;
     private OnRecycleItemClickListener onRecycleItemClickListener;
-
+    private OnRecycleItemLongClickListener mOnRecycleItemLongClickListener;
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
     public NoteAdapter(Context context) {
         super(context);
     }
@@ -80,13 +83,22 @@ public class NoteAdapter extends BaseRecyclerAdapter {
         }else {
             ((NormalViewHolder) viewHolder).titleTv.setText("请重新填写秘钥");
         }
-        ((NormalViewHolder) viewHolder).timeTv.setText(item.getCreate_at().toString());
+        ((NormalViewHolder) viewHolder).timeTv.setText(format.format(item.getCreate_at()));
         ((NormalViewHolder) viewHolder).noteLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != onRecycleItemClickListener) {
                     onRecycleItemClickListener.onItemClick(position);
                 }
+            }
+        });
+        ((NormalViewHolder) viewHolder).noteLl.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (null!=mOnRecycleItemLongClickListener){
+                    mOnRecycleItemLongClickListener.onItemLongClick(position);
+                }
+                return true;
             }
         });
     }
@@ -101,6 +113,10 @@ public class NoteAdapter extends BaseRecyclerAdapter {
 
     public void setOnRecycleItemClickListener(OnRecycleItemClickListener onRecycleItemClickListener) {
         this.onRecycleItemClickListener = onRecycleItemClickListener;
+    }
+
+    public void setOnRecycleItemLongClickListener(OnRecycleItemLongClickListener onRecycleItemLongClickListener) {
+        mOnRecycleItemLongClickListener = onRecycleItemLongClickListener;
     }
 
     //自定义的ViewHolder，持有每个Item的的所有界面元素

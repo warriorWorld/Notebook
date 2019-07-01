@@ -46,6 +46,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        curFragment.onHiddenChanged(false);
+    }
+
+    @Override
     protected void initUI() {
         super.initUI();
         mainV = findViewById(R.id.homepage_bottom_ll);
