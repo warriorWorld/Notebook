@@ -69,6 +69,7 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                         content = ThreeDESUtil.decode(StateUtil.getKey(ReleaseActivity.this), list.get(0).getString("content")).replaceAll("<space/>", " ");
                         titleEt.setText(Html.fromHtml(title));
                         contentEt.setText(Html.fromHtml(content));
+                        baseTopBar.setRightText(content.length() + "");
                     }
                 }
             }
@@ -104,7 +105,7 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
 
             @Override
             public void onTitleClick() {
-
+                doUploadRelease();
             }
         });
         baseTopBar.setTitle("笔记");
@@ -112,20 +113,31 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
         editDv.setOnClickListener(this);
     }
 
+    private void doUploadRelease() {
+        doUploadRelease(null);
+    }
+
     private void doUploadRelease(final OnResultListener onResultListener) {
         if (TextUtils.isEmpty(titleEt.getText().toString()) || TextUtils.isEmpty(contentEt.getText().toString())) {
-            onResultListener.onFailed();
+            if (null != onResultListener) {
+                onResultListener.onFailed();
+            }
             return;
         }
         if (!titleEt.isEnabled() && !contentEt.isEnabled()) {
-            onResultListener.onFailed();
+            if (null != onResultListener) {
+                onResultListener.onFailed();
+            }
             return;
         }
 
         String newTitle = titleEt.getText().toString().replaceAll(" ", "<space/>").replaceAll("\n", "<br/>");
         String newContent = contentEt.getText().toString().replaceAll(" ", "<space/>").replaceAll("\n", "<br/>");
+        baseTopBar.setRightText(newContent.length() + "");
         if (newTitle.equals(title) && newContent.equals(content)) {
-            onResultListener.onFailed();
+            if (null != onResultListener) {
+                onResultListener.onFailed();
+            }
             return;
         }
         title = newTitle;
@@ -148,7 +160,9 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                     SingleLoadBarUtil.getInstance().dismissLoadBar();
                     if (LeanCloundUtil.handleLeanResult(ReleaseActivity.this, e)) {
                         baseToast.showToast("上传完成");
-                        onResultListener.onFinish();
+                        if (null != onResultListener) {
+                            onResultListener.onFinish();
+                        }
                     }
                 }
             });
@@ -165,7 +179,9 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                     SingleLoadBarUtil.getInstance().dismissLoadBar();
                     if (LeanCloundUtil.handleLeanResult(ReleaseActivity.this, e)) {
                         baseToast.showToast("上传完成");
-                        onResultListener.onFinish();
+                        if (null != onResultListener) {
+                            onResultListener.onFinish();
+                        }
                     }
                 }
             });
@@ -223,17 +239,7 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onPause() {
         super.onPause();
-        doUploadRelease(new OnResultListener() {
-            @Override
-            public void onFinish() {
-
-            }
-
-            @Override
-            public void onFailed() {
-
-            }
-        });
+        doUploadRelease();
     }
 
     @Override
