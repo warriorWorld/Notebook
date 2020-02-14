@@ -24,6 +24,7 @@ import com.insightsurface.lib.widget.dragview.DragView;
 import com.insightsurface.notebook.R;
 import com.insightsurface.notebook.base.BaseActivity;
 import com.insightsurface.notebook.configure.Configure;
+import com.insightsurface.notebook.listener.OnResultListener;
 import com.insightsurface.notebook.utils.StateUtil;
 
 import java.io.File;
@@ -83,7 +84,17 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
         baseTopBar.setOnTopBarClickListener(new TopBar.OnTopBarClickListener() {
             @Override
             public void onLeftClick() {
-                doUploadRelease();
+                doUploadRelease(new OnResultListener() {
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailed() {
+                        finish();
+                    }
+                });
             }
 
             @Override
@@ -101,20 +112,20 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
         editDv.setOnClickListener(this);
     }
 
-    private void doUploadRelease() {
+    private void doUploadRelease(final OnResultListener onResultListener) {
         if (TextUtils.isEmpty(titleEt.getText().toString()) || TextUtils.isEmpty(contentEt.getText().toString())) {
-            finish();
+            onResultListener.onFailed();
             return;
         }
         if (!titleEt.isEnabled() && !contentEt.isEnabled()) {
-            finish();
+            onResultListener.onFailed();
             return;
         }
 
         String newTitle = titleEt.getText().toString().replaceAll(" ", "<space/>").replaceAll("\n", "<br/>");
         String newContent = contentEt.getText().toString().replaceAll(" ", "<space/>").replaceAll("\n", "<br/>");
         if (newTitle.equals(title) && newContent.equals(content)) {
-            finish();
+            onResultListener.onFailed();
             return;
         }
         title = newTitle;
@@ -137,7 +148,7 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                     SingleLoadBarUtil.getInstance().dismissLoadBar();
                     if (LeanCloundUtil.handleLeanResult(ReleaseActivity.this, e)) {
                         baseToast.showToast("上传完成");
-                        finish();
+                        onResultListener.onFinish();
                     }
                 }
             });
@@ -154,7 +165,7 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
                     SingleLoadBarUtil.getInstance().dismissLoadBar();
                     if (LeanCloundUtil.handleLeanResult(ReleaseActivity.this, e)) {
                         baseToast.showToast("上传完成");
-                        finish();
+                        onResultListener.onFinish();
                     }
                 }
             });
@@ -196,7 +207,33 @@ public class ReleaseActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onBackPressed() {
-        doUploadRelease();
+        doUploadRelease(new OnResultListener() {
+            @Override
+            public void onFinish() {
+                finish();
+            }
+
+            @Override
+            public void onFailed() {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        doUploadRelease(new OnResultListener() {
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onFailed() {
+
+            }
+        });
     }
 
     @Override
