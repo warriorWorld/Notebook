@@ -12,12 +12,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.insightsurface.notebook.business.encrypt.KeyActivity;
+import com.insightsurface.notebook.configure.Configure;
 import com.insightsurface.notebook.event.Event;
 import com.insightsurface.lib.base.BaseFragment;
 import com.insightsurface.lib.bean.LoginBean;
 import com.insightsurface.notebook.R;
+import com.insightsurface.notebook.utils.FileSpider;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.io.File;
 
 public class UserFragment extends BaseFragment implements View.OnClickListener {
     private ImageView userIv;
@@ -26,6 +30,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     private RelativeLayout feedbackRl;
     private RelativeLayout folderRl;
     private RelativeLayout keyRl;
+    private RelativeLayout backupRl;
 
     @Nullable
     @Override
@@ -43,7 +48,9 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         keyRl = (RelativeLayout) view.findViewById(R.id.key_rl);
         feedbackRl = (RelativeLayout) view.findViewById(R.id.feedback_rl);
         logoutTv = (TextView) view.findViewById(R.id.logout_tv);
+        backupRl = view.findViewById(R.id.backups_rl);
 
+        backupRl.setOnClickListener(this);
         userIv.setOnClickListener(this);
         folderRl.setOnClickListener(this);
         keyRl.setOnClickListener(this);
@@ -75,12 +82,16 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
             case R.id.user_iv:
                 break;
             case R.id.key_rl:
-                intent=new Intent(getActivity(), KeyActivity.class);
+                intent = new Intent(getActivity(), KeyActivity.class);
                 break;
             case R.id.feedback_rl:
                 break;
             case R.id.logout_tv:
                 doLogout();
+                break;
+            case R.id.backups_rl:
+                FileSpider.getInstance().copyDir(Configure.DOWNLOAD_PATH+ File.separator, Configure.BACKUPS_PATH+ File.separator);
+                baseToast.showToast("备份成功！");
                 break;
         }
         if (null != intent) {

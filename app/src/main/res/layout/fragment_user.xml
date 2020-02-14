@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/divide"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/divide"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/user_bg_rl"
@@ -18,7 +18,7 @@
             android:layout_height="60dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
-            android:src="@drawable/notepad"/>
+            android:src="@drawable/notepad" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                 android:includeFontPadding="false"
                 android:text="--"
                 android:textColor="@color/main_text_color"
-                android:textSize="21sp"/>
+                android:textSize="21sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
                 android:includeFontPadding="false"
                 android:text="欢迎您"
                 android:textColor="@color/main_text_color"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -64,7 +64,7 @@
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_folder"/>
+            android:src="@drawable/ic_folder" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_marginLeft="60dp"
             android:text="文件夹"
             android:textColor="@color/main_text_color"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="6dp"
@@ -81,7 +81,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:src="@drawable/forward"/>
+            android:src="@drawable/forward" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -99,7 +99,7 @@
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_key"/>
+            android:src="@drawable/ic_key" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
             android:layout_marginLeft="60dp"
             android:text="设置加密key"
             android:textColor="@color/main_text_color"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="6dp"
@@ -116,7 +116,42 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:src="@drawable/forward"/>
+            android:src="@drawable/forward" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/backups_rl"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/rect_white_c5"
+        android:elevation="1dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_backup" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:text="备份"
+            android:textColor="@color/main_text_color"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/forward" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -134,7 +169,7 @@
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_feedback"/>
+            android:src="@drawable/ic_feedback" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -143,7 +178,7 @@
             android:layout_marginLeft="60dp"
             android:text="意见反馈"
             android:textColor="@color/main_text_color"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="6dp"
@@ -151,7 +186,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:src="@drawable/forward"/>
+            android:src="@drawable/forward" />
     </RelativeLayout>
 
     <TextView
@@ -166,5 +201,5 @@
         android:gravity="center"
         android:text="退出账号"
         android:textColor="@color/main_text_color"
-        android:textSize="15sp"/>
+        android:textSize="15sp" />
 </LinearLayout>
